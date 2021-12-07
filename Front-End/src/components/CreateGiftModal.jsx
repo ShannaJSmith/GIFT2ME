@@ -6,16 +6,16 @@ import Stack from "@mui/material/Stack";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Modal from "@mui/material/Modal";
-import "./CreateGiftModel.scss";
+import "./CreateGiftModal.scss";
 
 import MultipleSelectButton from "./MultipleSelectButton";
 import WarningAlert from "./WarningAlert";
 import { createGift } from "../services/gift";
 
-export default function CreateGiftModel(props) {
+export default function CreateGiftModal(props) {
   const { setSelectedEventId, selectedEventId } = props;
   const [openWarningAlert, setOpenWarningAlert] = useState(false);
-  const [openGiftModel, setOpenGiftModel] = useState(false);
+  const [openGiftModal, setOpenGiftModal] = useState(false);
   const [giftInfo, setGiftInfo] = useState({
     event_id: selectedEventId,
     gift_name: "",
@@ -36,7 +36,7 @@ export default function CreateGiftModel(props) {
       quantity: 1,
       most_wanted: false
     })
-    setOpenGiftModel(false);
+    setOpenGiftModal(false);
   };
 
   const handleCreateGift = async () => {
@@ -69,13 +69,13 @@ export default function CreateGiftModel(props) {
         <Button
           variant="contained"
           onClick={() => {
-            setOpenGiftModel(true);
+            setOpenGiftModal(true);
           }}
         >
           <h5>Add Gift</h5>
         </Button>
       </div>
-      {openGiftModel && (
+      {openGiftModal && (
         <Modal
           open={true}
           onClose={onCancel}
