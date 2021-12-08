@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getEvent } from "../services/event";
+import { getGifts } from "../services/gift";
+
+/* ------ Components ------- */
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import EventWishList from "../components/EventWishList";
 import GifterEventInfo from "../components/GifterEventInfo";
-import { getGifts } from "../services/gift";
+
 
 export default function Event() {
   const { id } = useParams();
