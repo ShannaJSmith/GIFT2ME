@@ -1,3 +1,8 @@
+$primary: #46C5DB;
+$secondary: #72D6C9;
+$terinary: #D11071;
+$button: rgb(105, 102, 102);
+
 .heart {
   color: red;
 }
@@ -7,4 +12,56 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.gift-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  table-layout: auto;
+  width: 80%;
+  margin-left:auto; 
+  margin-right:auto;
+  margin-bottom: 100px;
+}
+
+th:first-of-type {
+  border-top-left-radius: 10px;
+}
+th:last-of-type {
+  border-top-right-radius: 10px;
+}
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 10px;
+}
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 10px;
+}
+
+th,
+td {
+  border-top: 2px solid $primary;
+  text-align:center;
+  padding: 8px;
+  font-size: 32px;
+  overflow: hidden;
+}
+
+th {
+  background-image: linear-gradient(to bottom left, $primary, $secondary);
+  text-transform: uppercase;
+}
+
+td {
+  background: rgba(193, 206, 206, 0.9);
+}
+
+th {
+  border: 0;
 }

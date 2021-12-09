@@ -87,7 +87,7 @@ const Dashboard = () => {
 
         <div className="event-container">
           <table>
-            <thead id="no-border">
+            <thead>
               <tr>
                 <th>Events</th>
                 <th>Share Wishlist</th>
