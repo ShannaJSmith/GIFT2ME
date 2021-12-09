@@ -107,3 +107,6 @@ const logout = (req, res, next) => {
 };
 
 module.exports = { login, register, logout };
+
+
+testing 
