@@ -10,7 +10,7 @@ import "./CreateEvent.scss";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import CreateEventForm from "../components/CreateEventForm";
-import CreateGiftModel from "../components/CreateGiftModel";
+import CreateGiftModal from "../components/CreateGiftModal";
 import CreateGiftList from "../components/CreateGiftList";
 
 export default function EditEvent() {
@@ -47,7 +47,7 @@ export default function EditEvent() {
             selectedEventId={selectedEventId}
             setSelectedEventId={setSelectedEventId}
           />
-          <CreateGiftModel
+          <CreateGiftModal
             setSelectedEventId={setSelectedEventId}
             selectedEventId={selectedEventId}
           />

@@ -8,7 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import GiftListHeader from "../components/GiftListHeader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactDOM from "react-dom";
-import CreateGiftModel from "./CreateGiftModel";
+import CreateGiftModal from "./CreateGiftModal";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Modal } from "react-bootstrap";
 import { Button } from "@mui/material";
@@ -22,7 +22,7 @@ const theme = createTheme({
   },
 });
 export default function CreateGiftList(props) {
-  const { openGiftModel, setOpenGiftModel, gifts } = props;
+  const { openGiftModal, setOpenGiftModal, gifts } = props;
 
   const [show, setShow] = useState({});
 
