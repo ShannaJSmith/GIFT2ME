@@ -14,7 +14,7 @@ const login = async (req, res, next) => {
       message: "Please fill all required fields"
     });
   }
-  const user = await getUserByEmail(email);
+  const user = await getUserByEmail(email.toLowerCase());
   if (!user) {
     return res.status(401).json({
       success: false,
