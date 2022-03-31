@@ -30,11 +30,10 @@
 .reg-btn {
 color: $secondary;
 display:column;
-}
-
-.reg-btn:hover {
+  &:hover {
   color: $link;
   }
+}
 
 #circle {
 display:flex;
