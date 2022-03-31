@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import ReactDOM from "react-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
-import { Modal } from "react-bootstrap";
-import { Button } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../fontawesome";
-import "./Dashboard.scss";
+import { Modal } from 'react-bootstrap';
+import { Button } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../fontawesome';
+import './Dashboard.scss';
 
 const theme = createTheme({
   palette: {
     cancel: {
-      main: "#808080",
+      main: '#808080',
     },
   },
 });
@@ -25,34 +25,33 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [eventNames, setEventNames] = useState([]);
   const [show, setShow] = useState({});
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState('');
 
   // retrieve the token from local storage, if empty string, you need to logged in.
-  const token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem('token');
 
   // authenticates the user and gets their name to be displayed on the nav bar
   useEffect(() => {
     if (token) {
-      const contents = JSON.parse(atob(token.split(".")[1]));
+      const contents = JSON.parse(atob(token.split('.')[1]));
       setUserName(contents.first_name);
-      console.log("contents", contents);
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/events", { withCredentials: true })
+      .get('http://localhost:3001/api/events', { withCredentials: true })
       .then((res) => setEventNames(res.data));
   }, []);
 
   const handleDelete = (eventId) => {
-    console.log("EVENTID:", eventId);
+    console.log('EVENTID:', eventId);
     return axios
       .delete(`http://localhost:3001/api/events/${eventId}/delete`, {
         withCredentials: true,
       })
       .then((res) => {
-        console.log("res:", res);
+        console.log('res:', res);
         const newEvents = [...eventNames];
         const index = eventNames.findIndex((event) => event.id === eventId);
         newEvents.splice(index, 1);
@@ -64,7 +63,7 @@ const Dashboard = () => {
   const handleClose = (eventId) => setShow({ ...show, [eventId]: false });
 
   const create = () => {
-    navigate("/events");
+    navigate('/events');
   };
   const edit = (id) => {
     navigate(`/events/${id}/edit`);
@@ -75,7 +74,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div classname="dashboard-container">
+      <div className="dashboard-container">
         <Navbar />
         <h1 className="title">My Dashboard</h1>
 
@@ -97,9 +96,12 @@ const Dashboard = () => {
             </thead>
             <tbody>
               {eventNames.map((event) => (
-                <tr>
-                  <td className="invitation" onClick={() => invitationPage(event.id)}>
-                    {event.event_name}                  
+                <tr key={event.id}>
+                  <td
+                    className="invitation"
+                    onClick={() => invitationPage(event.id)}
+                  >
+                    {event.event_name}
                   </td>
                   <td>
                     <a
@@ -116,17 +118,17 @@ const Dashboard = () => {
                         event.id
                       }`}
                     >
-                      <FontAwesomeIcon icon={["fas", "share-alt"]} />
+                      <FontAwesomeIcon icon={['fas', 'share-alt']} />
                     </a>
                   </td>
                   <td className="click edit" onClick={() => edit(event.id)}>
-                    <FontAwesomeIcon icon={["fas", "edit"]} />
+                    <FontAwesomeIcon icon={['fas', 'edit']} />
                   </td>
                   <td
                     className="click trash"
                     onClick={() => handleShow(event.id)}
                   >
-                    <FontAwesomeIcon icon={["fas", "trash"]} />
+                    <FontAwesomeIcon icon={['fas', 'trash']} />
                   </td>
                   {ReactDOM.createPortal(
                     <Modal show={show[event.id]}>

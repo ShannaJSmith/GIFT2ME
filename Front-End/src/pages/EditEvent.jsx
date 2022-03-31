@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getGifts } from "../services/gift";
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getGifts } from '../services/gift';
 
 /* ------ Styling ------- */
-import { Button } from "@mui/material";
-import "./CreateEvent.scss";
+import { Button } from '@mui/material';
+import './CreateEvent.scss';
 
 /* ------ Components ------- */
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import CreateEventForm from "../components/CreateEventForm";
-import CreateGiftModal from "../components/CreateGiftModal";
-import CreateGiftList from "../components/CreateGiftList";
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import CreateEventForm from '../components/CreateEventForm';
+import CreateGiftModal from '../components/CreateGiftModal';
+import CreateGiftList from '../components/CreateGiftList';
 
 export default function EditEvent() {
   const { id } = useParams();
@@ -25,9 +25,10 @@ export default function EditEvent() {
       const response = await getGifts(eventId);
       setGifts(response.data.gifts);
     } catch (e) {
-      console.log("error:", e);
+      console.log('error:', e);
     }
   };
+
   useEffect(() => {
     if (selectedEventId) {
       handleGiftsList(selectedEventId);
@@ -51,11 +52,14 @@ export default function EditEvent() {
             setSelectedEventId={setSelectedEventId}
             selectedEventId={selectedEventId}
           />
-          <CreateGiftList selectedEventId={selectedEventId} gifts={gifts}/>
+          <CreateGiftList selectedEventId={selectedEventId} gifts={gifts} />
         </div>
       </div>
       <div className="view-invitation">
-      <Button onClick={() => invitationPage(id)}>  View your invitation → </Button>
+        <Button onClick={() => invitationPage(id)}>
+          {' '}
+          View your invitation →{' '}
+        </Button>
       </div>
       <Footer />
     </>

@@ -1,45 +1,43 @@
-import react, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import './Navbar.scss'
-import { logout } from '../services/auth'
-import './Navbar.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import '../fontawesome'
+import react, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Navbar.scss';
+import { logout } from '../services/auth';
+import './Navbar.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../fontawesome';
 
 const Navbar = () => {
-  const [userName, setUserName] = useState('')
+  const [userName, setUserName] = useState('');
 
   // retrieve the token from local storage, if empty string, you need to logged in.
-  const token = window.localStorage.getItem('token')
+  const token = window.localStorage.getItem('token');
 
   // authenticates the user and gets their name to be displayed on the nav bar
   useEffect(() => {
     if (token) {
-      const contents = JSON.parse(atob(token.split('.')[1]))
-      setUserName(contents.first_name)
-      console.log('userName', userName)
-      console.log('contents', contents)
+      const contents = JSON.parse(atob(token.split('.')[1]));
+      setUserName(contents.first_name);
     }
-  }, [])
+  }, [token]);
   // handle the logout click
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [errorMsg, setErrorMsg] = useState('')
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleLogout = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     try {
-      await logout()
-      localStorage.removeItem('token')
-      navigate('/login')
+      await logout();
+      localStorage.removeItem('token');
+      navigate('/login');
     } catch (e) {
-      console.log(e)
-      console.log(e.response.status)
-      console.log(e.response.data)
-      console.log(e.response.data.message)
-      setErrorMsg(e.response.data.message)
+      console.log(e);
+      console.log(e.response.status);
+      console.log(e.response.data);
+      console.log(e.response.data.message);
+      setErrorMsg(e.response.data.message);
     }
-  }
+  };
   return (
     <nav className="nav">
       <Link to="/" className="link" style={{ textDecoration: 'none' }}>
@@ -91,7 +89,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

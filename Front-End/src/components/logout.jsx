@@ -1,17 +1,17 @@
-import react, { useState } from "react";
-import { logout } from "../services/auth";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { logout } from '../services/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
   const navigate = useNavigate();
 
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleLogout = async (event) => {
     event.preventDefault();
     try {
       await logout();
-      navigate("/login");
+      navigate('/login');
     } catch (e) {
       console.log(e);
       console.log(e.response.status);
