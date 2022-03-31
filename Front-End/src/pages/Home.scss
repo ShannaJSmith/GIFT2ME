@@ -35,16 +35,6 @@ display:column;
   }
 }
 
-#circle {
-display:flex;
-justify-content: center;
-background-image: linear-gradient(to bottom left, $primary, $secondary);
-border-radius: 50%;
-border: dotted $terinary;
-width: 200px;
-height: 200px;
-}
-
 .icons {
   display: flex;
   justify-content: center;
@@ -59,6 +49,16 @@ justify-content: center;
 color: $terinary;
 font-size: 80px;
 }
+
+#circle {
+  display:flex;
+  justify-content: center;
+  background-image: linear-gradient(to bottom left, $primary, $secondary);
+  border-radius: 50%;
+  border: dotted $terinary;
+  width: 200px;
+  height: 200px;
+  }
 
 .caption {
   display: flex;
